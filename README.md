@@ -1,55 +1,70 @@
 # 🚌 Nova Turismo Premium UI
 
-![Vercel Deployment](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 
-Um projeto *Single Page Application* de ultra-luxo voltado para a **Nova Turismo**, empresa especialista em fretamento corporativo e turismo rodoviário de alto padrão utilizando a sofisticada linha Marcopolo G8.
+Aplicação corporativa de ultra-luxo para a **Nova Turismo**. Recentemente elevada para a stack completa **Next.js 14**, a arquitetura foi desenhada não apenas para exibir a excelência da frota Marcopolo G8, mas para **dominar o tráfego de SEO Local** com Server-Side Rendering (SSR) dinâmico e arquitetura SEO-First.
 
-## 🎨 Token de Design (Aesthetics)
-A interface adota conceitos de ponta em webdesign como o poderoso *Glassmorphism*, transições e microinterações polidas em hover state.
+## 🏆 Pilares de Engenharia e SEO
 
-- **Backgrounds**: Deep Navy (`#050A14` & `#020409`)
-- **Action / Destaques**: Luxury Gold (`#C5A059`)
-- **Tipografia Escrita**: Fontes Google Modernas (*Cinzel* para exclusividade em cabeçalhos e *Inter* para o corpo de legibilidade técnica).
+### 1. Sistema de Silos de Conteúdo
+Construído para captura de rotas *Long-Tail Keywords* de serviços e praças logísticas do Google (Ex: `/cidades/sao-paulo`, `/servicos/fretamento-onibus`). Cada rota gera seus H1s parametrizados em Server-Side sem refetching de layout.
 
-## 🚀 Setup & Execução Local
+### 2. Core Web Vitals Superior
+Implementação massiva do container `<Image />` nativo do Next. Otimizações de rotina:
+- Conversão binária transparente de imagens para `WebP`.
+- `Lazy loading` sob demanda impulsionando as réguas FCP/LCP da performance Google.
+- Preload nativo da fonte **Google Fonts** (`next/font`) diminuindo latências TTFB.
 
-Pelo fato do projeto ser erguido através de uma stack de compressão enxuta e moderna envolvendo React + Vite, a execução é extremamente rápida:
+### 3. Aesthetics & Tracking
+Interface banhada ao poderoso *Glassmorphism*. Identidade baseada no Deep Navy/Luxury Gold injetada via **Tailwind CSS**. A estrutura raiz já contém tags HTML JSON-LD (*LocalBusiness Schema.org*) para destaque local da marca nos rich snippets (Resultados Aprimorados) do Buscador.
 
-1. **Instale as as dependências:**
+---
+
+## 🚀 Como Iniciar o Desenvolvimento
+
+Nesta V2 em arquitetura robusta Next.js:
+
+1. **Faça o tracking seguro da rede:**
 ```bash
 npm install
 ```
 
-2. **Rode o Servidor de Desenvolvimento:**
+2. **Suba o Node Server:**
 ```bash
 npm run dev
 ```
 
-Abra em seu navegador: [http://localhost:5173](http://localhost:5173). O Vite aplicará as atualizações automáticas via Hot-Module-Replacement na edição.
+Abra em seu navegador: [http://localhost:3000](http://localhost:3000). O ecossistema fará compile automático via Fast Refresh.
 
-## 📂 Estrutura Relevante
-A estrutura segue uma abstração de *Single File Mandate* na aplicação central de layout com configuração nativa englobada em volta.
+## 📂 Visão Modular (App Router)
+O monólito clássico foi pulverizado para respeitar arquiteturas Client/Server do Next:
 ```
-turismo/
+turismo-next/
 │
-├── public/                 # Imagens da Logo Customizada e Ônibus
-│   ├── frota.png           # Foto base do Onibus Marcopolo G8 com Blend treatment
-│   └── logo.png            # PNG da logotipo
+├── public/                 # Vetores, Assets estáticos puros
+│   ├── frota.png           
+│   └── logo.png            
 │
-├── main.jsx                # Entry-Point originário da DOM e CSS.
-├── nova.jsx                # SPA Principal (Toda a lógica e marcação e design do App)
-├── index.css               # Setup das diretrizes padrões Tailwind
+├── src/
+│   ├── app/                # Roteamento Inteligente Server-Side
+│   │   ├── cidades/        # [slug] Content Silo Geográfico
+│   │   ├── servicos/       # [slug] Content Silo Atuação
+│   │   ├── globals.css     # Diretrizes Tailwind unificadas
+│   │   ├── layout.jsx      # Metadados Head, Schemas SEO e Fontes Globais
+│   │   └── page.jsx        # Landing Core Assembly
+│   │
+│   └── components/         # Microfrontend
+│       ├── Blocks.jsx      # Fragmentos Gigantes Renderizados no Servidor (.server)
+│       ├── Header.jsx      # UI Layer de Navegação (.client)
+│       └── LeadForm.jsx    # Captação de Conversão Reactiva (.client)
 │
-├── vercel.json             # Configuração para Host de SPA + Rewrites da Vercel
-├── tailwind.config.js      # Setup e mapeamento de rotas do CSS engine
-├── postcss.config.js       # Auto-Prefixer e parser 
-└── package.json            # Dependências + Vite CLI
+├── next.config.js          # Webpack/Compiler pipeline config
+├── tailwind.config.js      # CSS Tokens Definitions
+└── package.json            
 ```
 
-## ☁️ Deployment
-Este escopo já possui o controle e o mapeamento de Deploy em nuvem (arquitetura SPA com rewrites no arquivo `vercel.json`).
-
-Basta plugar este repositório no seu painel [Vercel](https://vercel.com/new). Automáticamente as ferramentas vão detectar o framework de Vite para subir o bundling nativamente para ambiente de produção sem que seja necessária nenhuma configuração manual.
+## ☁️ Deployment Produtivo (Zero-Config)
+Por estar sob forte guarda do framework original, basta conectar este projeto na dashboard da [Vercel](https://vercel.com/new). A nuvem compreenderá a arquitetura SSR e cuidará isoladamente e de modo atômico das distribuições da rede Edge para o cliente. Não é requerida nenhuma adaptação forçada no repo!
